@@ -1,0 +1,4 @@
+sku_id,location_id,as_of_date,on_hand,reserved,inbound,unit_cost
+SKU1,ATL_DC,2025-08-14,500,50,100,12.5
+SKU2,ATL_DC,2025-08-14,200,20,0,8.0
+SKU3,CHI_DC,2025-08-14,1000,0,0,3.2

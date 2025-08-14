@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: scm-ai-api
+    env: docker
+    rootDir: api
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: APP_SECRET
+        generateValue: true
+      - key: CH_HOST
+        value: <your-clickhouse-cloud-host>
+      - key: CH_PORT
+        value: "8443"
+      - key: CH_DB
+        value: scm
+      - key: CH_USER
+        value: <your-user>
+      - key: CH_PASSWORD
+        sync: false
+      - key: CH_SECURE
+        value: "true"
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_BASE_URL
+        value: https://api.together.xyz/v1
+      - key: NVIDIA_API_KEY
+        sync: false
+  - type: web
+    name: scm-ai-ui
+    env: docker
+    rootDir: ui
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: API_URL
+        value: https://<api-service-url>
+      - key: DEMO_TENANT
+        value: demo
+
+# Notes:
+# - Set either NVIDIA_API_KEY (for NeMo Guardrails with NVIDIA endpoints), OR OPENAI_* for Together.

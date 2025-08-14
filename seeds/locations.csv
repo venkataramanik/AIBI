@@ -1,0 +1,10 @@
+location_id,name,type,city,state,country,lat,lon
+ATL,Atlanta WH,WH,Atlanta,GA,US,33.749,-84.388
+ATL_DC,Atlanta DC,WH,Atlanta,GA,US,33.749,-84.388
+CHI,Chicago WH,WH,Chicago,IL,US,41.878,-87.629
+CHI_DC,Chicago DC,WH,Chicago,IL,US,41.878,-87.629
+ORL,Orlando WH,WH,Orlando,FL,US,28.538,-81.379
+DFW,Dallas WH,WH,Dallas,TX,US,32.776,-96.797
+DEN,Denver WH,WH,Denver,CO,US,39.739,-104.990
+LAX,Los Angeles WH,WH,Los Angeles,CA,US,34.052,-118.244
+SEA,Seattle WH,WH,Seattle,WA,US,47.606,-122.332

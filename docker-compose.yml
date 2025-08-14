@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.4
+    environment:
+      - CLICKHOUSE_DB=${CH_DB}
+    ports: ["8123:8123"]
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - ch_data:/var/lib/clickhouse
+
+  redis:
+    image: redis:7
+    ports: ["6379:6379"]
+    volumes: [ "redis_data:/data" ]
+
+  ollama:
+    image: ollama/ollama:latest
+    ports: ["11434:11434"]
+    volumes: [ "ollama:/root/.ollama" ]
+
+  api:
+    build: ./api
+    env_file: .env
+    depends_on: [ clickhouse, redis ]
+    ports: ["8000:8000"]
+
+  ui:
+    build: ./ui
+    env_file: .env
+    depends_on: [ api ]
+    ports: ["8501:8501"]
+
+volumes:
+  ch_data:
+  redis_data:
+  ollama:

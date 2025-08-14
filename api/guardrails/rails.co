@@ -1,0 +1,24 @@
+define flow user_asks_question
+  user says q
+  bot do generate_sql(q)
+  bot ensure sql_is_safe
+  bot say show_sql_and_results
+
+define bot action generate_sql(q)
+  # Only use: vw_carrier_kpi, vw_lane_perf, vw_inventory_health
+  # Enforce tenant_id filter and last 90 days if a date column exists
+  # SELECT/WITH only; LIMIT 500
+  # Return ONLY SQL.
+end
+
+define bot action ensure sql_is_safe
+  if model_output contains "INSERT" or "UPDATE" or "DELETE" or "DROP" or "ALTER"
+    bot say "I can only run read-only analytics."
+    stop
+  if model_output not contains "tenant_id"
+    bot say "Query must include a tenant filter."
+    stop
+end
+
+define bot message show_sql_and_results
+  "Here is the SQL I will run, followed by the table. You can adjust and rerun."
