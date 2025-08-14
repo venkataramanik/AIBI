@@ -1,7 +1,6 @@
 FROM python:3.11-bookworm
 WORKDIR /app
 
-# Build tools for native wheels (e.g., annoy) and a modern pip
 RUN apt-get update && apt-get install -y --no-install-recommends \
       build-essential curl git \
     && rm -rf /var/lib/apt/lists/*
