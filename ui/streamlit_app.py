@@ -19,6 +19,9 @@ with st.sidebar:
 if not st.session_state.token:
     token = st.text_input("Paste Access Token", value="", type="password")
     if token:
-        st.session_state.token = token; st.experimental_rerun()
+        st.session_state.token = token
+st.rerun()
+
 else:
     st.write("Use pages: 📥 Upload, 📊 Dashboards, 🤖 Ask AI, 🧪 Supply Chain Demos, ⚙️ Admin.")
+
