@@ -10,17 +10,11 @@ sqlglot==23.7.0
 httpx==0.27.0
 python-dotenv==1.0.1
 
-# Guardrails (requires Jinja >= 3.1.6)
-# nemoguardrails==0.15.0
-# jinja2==3.1.6
-
-# OpenAI-compatible client for Together (no NVIDIA adapter needed)
-# openai==1.40.0
+# Guardrails (+ Jinja version Guardrails needs)
 nemoguardrails==0.15.0
-jinja2>=3.1.6
-openai==1.40.0
+jinja2==3.1.6
 
-# REQUIRED for Guardrails 'openai' engine:
+# OpenAI SDK and the REQUIRED adapter for Guardrails' OpenAI engine
+openai==1.40.0
 langchain-openai==0.1.21
-# (optional but safe pin; langchain-openai pulls this anyway)
 langchain-core==0.2.35
