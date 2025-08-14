@@ -11,3 +11,4 @@ sqlglot==23.7.0
 httpx==0.27.0
 python-dotenv==1.0.1
 nemoguardrails==0.15.0
+langchain-nvidia-ai-endpoints>=0.3.0
