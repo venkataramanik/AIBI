@@ -1,0 +1,33 @@
+name: Unpack Zip to Repo
+on:
+  push:
+    paths:
+      - "*.zip"       # runs whenever you push/upload a .zip
+permissions:
+  contents: write
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip newest zip to repo root
+        shell: bash
+        run: |
+          set -e
+          ZIP=$(ls -t *.zip | head -n1)
+          echo "Unzipping $ZIP ..."
+          unzip -o "$ZIP" -d .
+          # If the zip contains a top-level folder (scm-ai-bi/), move its contents up:
+          if [ -d "scm-ai-bi" ]; then
+            shopt -s dotglob
+            mv -f scm-ai-bi/* .
+            rmdir scm-ai-bi
+          fi
+          rm -f "$ZIP"
+      - name: Commit extracted files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Unpack zip" || echo "Nothing to commit"
+          git push
