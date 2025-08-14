@@ -12,11 +12,16 @@ python-dotenv==1.0.1
 
 # Guardrails + deps
 nemoguardrails==0.15.0
-jinja2>=3.1.6
+jinja2==3.1.6
 
-# NVIDIA provider adapter (this is the missing piece)
-langchain-nvidia-ai-endpoints==0.3.0
+# NVIDIA provider adapter (needed for engine: nvidia_ai_endpoints)
+langchain-nvidia-ai-endpoints==0.3.1
 
-# (Explicit LangChain to satisfy the adapter’s imports)
-langchain>=0.2.11
-langchain-core>=0.2.24
+# Explicit LangChain pins to satisfy adapter imports
+langchain==0.2.14
+langchain-core==0.2.35
+
+# Guardrails extras that sometimes trigger native builds
+aiohttp==3.12.15
+fastembed==0.6.0
+annoy==1.17.3
