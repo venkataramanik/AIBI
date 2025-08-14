@@ -1,6 +1,6 @@
 models:
   - type: main
     engine: nvidia_ai_endpoints
-    model: meta/llama-3.3-70b-instruct
+    model: meta/llama-4-maverick-17b-128e-instruct
     parameters:
       temperature: 0.1
