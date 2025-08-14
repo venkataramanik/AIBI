@@ -10,10 +10,9 @@ sqlglot==23.7.0
 httpx==0.27.0
 python-dotenv==1.0.1
 
+# Guardrails (requires Jinja >= 3.1.6)
 nemoguardrails==0.15.0
 jinja2==3.1.6
 
-# NVIDIA provider adapter + its LangChain deps
-langchain-nvidia-ai-endpoints==0.3.1
-langchain==0.2.14
-langchain-core==0.2.35
+# OpenAI-compatible client for Together (no NVIDIA adapter needed)
+openai==1.40.0
