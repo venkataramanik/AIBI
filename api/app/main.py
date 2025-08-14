@@ -1,3 +1,19 @@
+# add at the top
+from fastapi import UploadFile, File, Form
+
+# add below your existing routes
+@app.post("/ingest/upload")
+async def ingest_csv_upload(
+    kind: str = Form(...),
+    tenant_id: str = Form(...),
+    file: UploadFile = File(...),
+    user=Depends(require_user),
+):
+    b = await file.read()
+    rows = ingest_csv(kind, tenant_id, b)
+    return {"ingested": rows}
+
+
 from fastapi import FastAPI, Depends, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
 from .deps import require_user, issue_token
